@@ -1,4 +1,0 @@
-#ifdef SIMPLESHELL_H_
-#define SIMPLESHELL_H_
-
-#endif SIMPLESHELL_H_
