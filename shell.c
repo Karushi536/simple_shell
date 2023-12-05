@@ -14,10 +14,10 @@ int main(void)
 
 	execve(args[0], args, NULL);
 
-/* Adding a blank line after declarations */
-	if (strcmp(args[0], "exit") == 0){
-		printf ("Goodbye!\n");
+	if (strcmp(args[0], "exit") == 0)
+	{
+		printf("Goodbye!\n");
 		exit(0);
-/* this is to make it stop */
-return (0);
+	}
+	return (0);
 }
