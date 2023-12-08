@@ -12,6 +12,6 @@ int main(void)
 	pid_t pid;
 
 	pid = getpid();
-	printf("The process id is %u", pid);
+	printf("The process id is %u\n", pid);
 	return (0);
 }
