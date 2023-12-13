@@ -12,5 +12,7 @@
 void display_prompt(void);
 void user_input(char *command, size_t size);
 void execute_command(const char *command);
-
+char *read_line(void);
+char **split_line(char *line);
+void execute(char **args);
 #endif
