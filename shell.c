@@ -15,7 +15,7 @@ void display_prompt(void)
  */
 int main(void)
 {
-	pid_t child_pid; /*Declare pid_t at the beginning */
+	pid_t child_pid;
 	char command[MAX_COMMAND_LENGTH];
 
 	while (1)
@@ -32,7 +32,7 @@ int main(void)
 		command[strcspn(command, "\n")] = '\0';
 
 		/*fork a new process*/
-		pid_t child_pid = fork();
+		child_pid = fork();
 
 		if (child_pid == -1)
 		{

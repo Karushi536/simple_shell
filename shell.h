@@ -9,4 +9,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+void display_prompt(void);
+void user_input(char *command, size_t size);
+void execute_command(const char *command);
+
 #endif
