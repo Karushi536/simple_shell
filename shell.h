@@ -1,9 +1,5 @@
 #ifndef SHELL_H
 #define SHELL_H
-<<<<<<< HEAD
-=======
-
->>>>>>> 7f2d39226e519cd138570918a6ba8ea72f97bd9e
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,15 +15,7 @@
 /* Define flags for convert_number */
 #define CONVERT_UNSIGNED 1
 #define CONVERT_LOWERCASE 2
-/**
- * struct info_s - Structure to hold information.
- * @fname: file name
- * @argv: argument vector.
- * @line_count: line count
- * @readfd: File discriptor for reading.
- */
 
-<<<<<<< HEAD
 /**
  * struct list_s - singly linked list
  * @str: string data
@@ -49,46 +37,16 @@ typedef struct list_s
  * @err_num: error number
  * @env: linked list local copy of environ
  */
-=======
->>>>>>> 7f2d39226e519cd138570918a6ba8ea72f97bd9e
 typedef struct info_s
 {
 	char *fname;
 	char **argv;
 	int line_count;
-<<<<<<< HEAD
 	int readfd;
-=======
-	int readfd; /* TODO: Define the data type for readfd*/
-} info_t;
-/**
- * struct info - Structure to hold command execution information.
- * @status: Execution status.
- * @err_num: Error number.
- * @env: Environment variables.
- */
-
-typedef struct info
-{
->>>>>>> 7f2d39226e519cd138570918a6ba8ea72f97bd9e
 	int status;
 	int err_num;
 	list_t *env;
 } info_t;
-<<<<<<< HEAD
-=======
-/**
- * struct list_s - Structure for a linked list node.
- * @next: Pointer to the next node in the linked list.
- * @str: Some string data.
- */
-/* Define structure for singly linked list */
-typedef struct list_s
-{
-	char *str;
-	struct list_s *next;
-} list_t;
->>>>>>> 7f2d39226e519cd138570918a6ba8ea72f97bd9e
 
 /* Initialize an instance of the info_t structure */
 #define INFO_INIT {NULL, NULL, 0, 0, 0, 0, NULL}
@@ -186,7 +144,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len);
 ssize_t get_input(info_t *info);
 ssize_t read_buf(info_t *info, char *buf, size_t *i);
 int _getline(info_t *info, char **ptr, size_t *length);
-void sigintHandler(__attribute__((unused))int sig_num);
+void sigintHandler(__attribute__((unused)) int sig_num);
 
 /* Function declarations for history.c */
 char *get_history_file(info_t *info);
@@ -217,47 +175,6 @@ int set_alias(info_t *info, char *str);
 int print_alias(list_t *node);
 int _myalias(info_t *info);
 
-<<<<<<< HEAD
-=======
-#define BUF_FLUSH -1
-#define WRITE_BUF_SIZE 1024
-/**
- * struct info - Structure to hold command execution information.
- * @readfd: File discriptor for reading.
- */
-
-typedef struct info
-{
-	int readfd;
-	/* Add other members as needed */
-} info_t;
-
-int interactive_mode(info_t *info);
-int is_delimiter(char c, char *delimiters);
-int is_alpha(int c);
-int _atoi(char *s);
-
-int interactive_mode(info_t *info);
-int is_delimiter(char c, char *delimiters);
-int is_alpha(int c);
-int _atoi(char *s);
-
-char *_strncpy(char *dest, char *src, int n);
-char *_strncat(char *dest, char *src, int n);
-char *_strchr(char *s, char c);
-
-int is_chain(info_t *info, char *buf, size_t *p);
-void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len);
-int replace_alias(info_t *info);
-int replace_vars(info_t *info);
-int replace_string(char **old, char *new);
-
-void _eputs(char *str);
-int _eputchar(char c);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
-
->>>>>>> 7f2d39226e519cd138570918a6ba8ea72f97bd9e
 /* tokenizer.c */
 char **ms_strtow(char *str, char *d);
 char **ms_strtow2(char *str, char d);
