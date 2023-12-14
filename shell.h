@@ -1,5 +1,5 @@
-#ifndef SHELL_H_
-#define SHELL_H_
+#ifndef SHELL_H
+#define SHELL_H
 
 
 #include <stdio.h>
@@ -142,6 +142,10 @@ int _myalias(info_t *info);
 
 #define BUF_FLUSH -1
 #define WRITE_BUF_SIZE 1024
+/**
+ * struct info - Structure to hold command execution information.
+ * @readfd: File discriptor for reading.
+ */
 
 typedef struct info
 {
