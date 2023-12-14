@@ -10,8 +10,9 @@ void display_prompt(void)
 	fflush(stdout);
 }
 /**
- * Main - function for the simple shell
- * return: 0 on successful execution
+ * main - Entry point for the shell program.
+ *
+ * Return: 0 on success, 1 on failure.
  */
 int main(void)
 {
