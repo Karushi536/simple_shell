@@ -1,6 +1,5 @@
 #ifndef SHELL_H
-#define SHELL_H_
-
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,7 +7,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <limits.h> 
+#include <limits.h>
 #include <fcntl.h>
 
 #define STDERR_FILENO 2
@@ -17,30 +16,84 @@
 #define CONVERT_UNSIGNED 1
 #define CONVERT_LOWERCASE 2
 
-/* Define structure for info */
+/**
+ * struct list_s - singly linked list
+ * @str: string data
+ * @next: points to the next node
+ */
+typedef struct list_s
+{
+	char *str;
+	struct list_s *next;
+} list_t;
+
+/**
+ * struct info_s - shell information structure
+ * @fname: program filename
+ * @argv: argument vector
+ * @line_count: line count
+ * @readfd: file descriptor for reading
+ * @status: command execution status
+ * @err_num: error number
+ * @env: linked list local copy of environ
+ */
 typedef struct info_s
 {
 	char *fname;
 	char **argv;
 	int line_count;
-	int readfd; // TODO: Define the data type for readfd
-
-/* Add the env member to info_t structure */
+	int readfd;
 	int status;
 	int err_num;
-	struct list_s *env;
+	list_t *env;
 } info_t;
 
-/* Define structure for singly linked list */
-typedef struct list_s
-{
-    char *str;
-    struct list_s *next;
-} list_t;
-
 /* Initialize an instance of the info_t structure */
+#define INFO_INIT {NULL, NULL, 0, 0, 0, 0, NULL}
 
-#define INFO_INIT {NULL, NULL, 0, 0}
+/**
+ * struct passinfo - contains pseudo-arguments to pass into a function,
+ * allowing a uniform prototype for function pointer struct
+ * @arg: a string generated from getline containing arguments
+ * @argv: an array of strings generated from arg
+ * @path: a string path for the current command
+ * @argc: the argument count
+ * @line_count: the error count
+ * @err_num: the error code for exit()s
+ * @linecount_flag: if on count this line of input
+ * @fname: the program filename
+ * @env: linked list local copy of environ
+ * @environ: custom modified copy of environ from LL env
+ * @history: the history node
+ * @alias: the alias node
+ * @env_changed: on if environ was changed
+ * @status: the return status of the last exec'd command
+ * @cmd_buf: address of pointer to cmd_buf, on if chaining
+ * @cmd_buf_type: CMD_type ||, &&, ;
+ * @readfd: the fd from which to read line input
+ * @histcount: the history line number count
+ */
+typedef struct passinfo
+{
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory management */
+	int cmd_buf_type; /* CMD_type ||, &&, ; */
+	int readfd;
+	int histcount;
+} passinfo_t;
 
 /* Function prototypes for errors1.c */
 int _erratoi(char *s);
@@ -122,40 +175,6 @@ int set_alias(info_t *info, char *str);
 int print_alias(list_t *node);
 int _myalias(info_t *info);
 
-#define BUF_FLUSH -1
-#define WRITE_BUF_SIZE 1024
-
-typedef struct info
-{
-	int readfd;
-	/* Add other members as needed */
-} info_t;
-
-int interactive_mode(info_t *info);
-int is_delimiter(char c, char *delimiters);
-int is_alpha(int c);
-int _atoi(char *s);
-
-int interactive_mode(info_t *info);
-int is_delimiter(char c, char *delimiters);
-int is_alpha(int c);
-int _atoi(char *s);
-
-char *_strncpy(char *dest, char *src, int n);
-char *_strncat(char *dest, char *src, int n);
-char *_strchr(char *s, char c);
-
-int is_chain(info_t *info, char *buf, size_t *p);
-void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len);
-int replace_alias(info_t *info);
-int replace_vars(info_t *info);
-int replace_string(char **old, char *new);
-
-void _eputs(char *str);
-int _eputchar(char c);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
-
 /* tokenizer.c */
 char **ms_strtow(char *str, char *d);
 char **ms_strtow2(char *str, char d);
@@ -186,4 +205,40 @@ void ms_set_info(info_t *info, char **av);
  * @all: true if freeing all fields
  */
 void ms_free_info(info_t *info, int all);
-#endif
+
+/**
+ * ms_is_cmd - determines if a file is an executable command
+ * @info: the info struct
+ * @path: path to the file
+ *
+ * Return: 1 if true, 0 otherwise
+ */
+int ms_is_cmd(info_t *info, char *path);
+
+/**
+ * ms_dup_chars - duplicates characters
+ * @pathstr: the PATH string
+ * @start: starting index
+ * @stop: stopping index
+ *
+ * Return: pointer to new buffer
+ */
+char *ms_dup_chars(char *pathstr, int start, int stop);
+
+/**
+ * ms_find_path - finds this cmd in the PATH string
+ * @info: the info struct
+ * @pathstr: the PATH string
+ * @cmd: the cmd to find
+ *
+ * Return: full path of cmd if found or NULL
+ */
+char *ms_find_path(info_t *info, char *pathstr, char *cmd);
+
+/* Function prototypes for new functions in shell_loop.c */
+int ms_shell_loop(info_t *info, char **av);
+int find_builtin(info_t *info);
+void find_cmd(info_t *info);
+
+#endif /* SHELL_H */
+
