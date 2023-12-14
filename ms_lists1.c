@@ -43,7 +43,7 @@ char **ms_list_to_strings(list_t *head)
 	{
 	for (j = 0; j < i; j++)
 		free(strs[j]);
-		free(strs);
+	free(strs);
 	return (NULL);
 	}
 
@@ -66,15 +66,12 @@ size_t ms_print_list(const list_t *h)
 
 	while (h)
 	{
-	_puts(convert_number(h->num, 10, 0));
-	_putchar(':');
-	_putchar(' ');
 	_puts(h->str ? h->str : "(nil)");
 	_puts("\n");
 	h = h->next;
 	i++;
 	}
-	return (i);
+	return i;
 }
 
 /**

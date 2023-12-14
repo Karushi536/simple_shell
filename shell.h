@@ -31,6 +31,8 @@ typedef struct list_s
  * struct info_s - shell information structure
  * @fname: program filename
  * @argv: argument vector
+ * @environ: environment variables as a string array
+ * @env_changed: flag indicating whether the environment has changed
  * @line_count: line count
  * @readfd: file descriptor for reading
  * @status: command execution status
@@ -39,6 +41,8 @@ typedef struct list_s
  */
 typedef struct info_s
 {
+	char **environ;
+	int env_changed;
 	char *fname;
 	char **argv;
 	int line_count;
@@ -241,6 +245,6 @@ int find_builtin(info_t *info);
 void find_cmd(info_t *info);
 
 char **_get_environ(void);
-
+char **list_to_strings(list_t *head);
 #endif /* SHELL_H */
 
