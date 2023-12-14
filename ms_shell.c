@@ -55,17 +55,18 @@ int main(void)
 
 		else
 		{
-			int status;
+		int status;
 
-			waitpid(child_pid, &status, 0);
+		waitpid(child_pid, &status, 0);
 
-			if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
-			{
-				printf("%s: No such file or directory\n", command);
-			}
+		if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+		{
+		printf("%s: No such file or directory\n", command);
+		}
 		}
 	}
-
+	}
+}
 	printf("\n");
 	return (0);
 }
