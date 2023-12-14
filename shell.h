@@ -1,4 +1,4 @@
-#ifndef SHELL_H
+#ifndef SHELL_H_
 #define SHELL_H_
 
 
@@ -8,7 +8,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <limits.h> 
+#include <limits.h>
 #include <fcntl.h>
 
 #define STDERR_FILENO 2
@@ -16,26 +16,44 @@
 /* Define flags for convert_number */
 #define CONVERT_UNSIGNED 1
 #define CONVERT_LOWERCASE 2
+/**
+ * struct info_s - Structure to hold information.
+ * @fname: file name
+ * @argv: argument vector.
+ * @line_count: line count
+ * @readfd: File discriptor for reading.
+ */
 
-/* Define structure for info */
 typedef struct info_s
 {
 	char *fname;
 	char **argv;
 	int line_count;
-	int readfd; // TODO: Define the data type for readfd
+	int readfd; /* TODO: Define the data type for readfd*/
+} info_t;
+/**
+ * struct info - Structure to hold command execution information.
+ * @status: Execution status.
+ * @err_num: Error number.
+ * @env: Environment variables.
+ */
 
-/* Add the env member to info_t structure */
+typedef struct info
+{
 	int status;
 	int err_num;
 	struct list_s *env;
 } info_t;
-
+/**
+ * struct list_s - Structure for a linked list node.
+ * @next: Pointer to the next node in the linked list.
+ * @str: Some string data.
+ */
 /* Define structure for singly linked list */
 typedef struct list_s
 {
-    char *str;
-    struct list_s *next;
+	char *str;
+	struct list_s *next;
 } list_t;
 
 /* Initialize an instance of the info_t structure */
