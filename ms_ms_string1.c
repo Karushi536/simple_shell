@@ -36,18 +36,18 @@ char *_strdup(const char *str)
 	if (str == NULL)
 	return (NULL);
 	while (*str++)
-	length++;
+		length++;
 	ret = malloc(sizeof(char) * (length + 1));
 	if (!ret)
-	return (NULL);
+		return (NULL);
 	for (length++; length--;)
-	ret[length] = *--str;
+		ret[length] = *--str;
 	return (ret);
 }
 
 /**
- *_puts - prints an input string
- *@str: the string to be printed
+ * _puts - prints an input string
+ * @str: the string to be printed
  *
  * Return: Nothing
  */
@@ -82,6 +82,6 @@ int _putchar(char c)
 	i = 0;
 	}
 	if (c != BUF_FLUSH)
-	buf[i++] = c;
+		buf[i++] = c;
 	return (1);
 }

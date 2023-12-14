@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <string.h>
 
 /**
  * ms_is_cmd - determines if a file is an executable command
@@ -57,7 +58,7 @@ char *ms_find_path(info_t *info, char *pathstr, char *cmd)
 
 	if (!pathstr)
 	return (NULL);
-	if ((ms_strlen(cmd) > 2) && ms_starts_with(cmd, "./"))
+	if ((strlen(cmd) > 2) && starts_with(cmd, "./"))
 	{
 	if (ms_is_cmd(info, cmd))
 		return (cmd);
@@ -67,20 +68,20 @@ char *ms_find_path(info_t *info, char *pathstr, char *cmd)
 	if (!pathstr[i] || pathstr[i] == ':')
 	{
 		path = ms_dup_chars(pathstr, curr_pos, i);
-	if (!*path)
-		ms_strcat(path, cmd);
-	else
+		if (!*path)
+			strcat(path, cmd);
+		else
 		{
-		ms_strcat(path, "/");
-		ms_strcat(path, cmd);
+			strcat(path, "/");
+			strcat(path, cmd);
 		}
-	if (ms_is_cmd(info, path))
-	return (path);
-	if (!pathstr[i])
-	break;
-	curr_pos = i;
+		if (ms_is_cmd(info, path))
+			return (path);
+		if (!pathstr[i])
+			break;
+		curr_pos = i;
 	}
-	i++;
+		i++;
 	}
 	return (NULL);
 }
