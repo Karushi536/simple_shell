@@ -156,4 +156,34 @@ int _eputchar(char c);
 int _putfd(char c, int fd);
 int _putsfd(char *str, int fd);
 
+/* tokenizer.c */
+char **ms_strtow(char *str, char *d);
+char **ms_strtow2(char *str, char d);
+
+/* lists1.c */
+size_t ms_list_len(const list_t *h);
+char **ms_list_to_strings(list_t *head);
+size_t ms_print_list(const list_t *h);
+list_t *ms_node_starts_with(list_t *node, char *prefix, char c);
+ssize_t ms_get_node_index(list_t *head, list_t *node);
+
+/**
+ * ms_clear_info - initializes info_t struct
+ * @info: struct address
+ */
+void ms_clear_info(info_t *info);
+
+/**
+ * ms_set_info - initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
+ */
+void ms_set_info(info_t *info, char **av);
+
+/**
+ * ms_free_info - frees info_t struct fields
+ * @info: struct address
+ * @all: true if freeing all fields
+ */
+void ms_free_info(info_t *info, int all);
 #endif
