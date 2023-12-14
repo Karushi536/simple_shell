@@ -240,5 +240,7 @@ int ms_shell_loop(info_t *info, char **av);
 int find_builtin(info_t *info);
 void find_cmd(info_t *info);
 
+char **_get_environ(void);
+
 #endif /* SHELL_H */
 
