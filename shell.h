@@ -14,7 +14,7 @@
 int stat(const char *path, struct stat *buf);
 
 #define WRITE_BUF_SIZE 1024
-#define BUF_FLUSH '\0'     
+#define BUF_FLUSH '\0'
 #define STDERR_FILENO 2
 
 /* Define flags for convert_number */
