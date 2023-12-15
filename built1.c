@@ -49,13 +49,18 @@ int set_alias(info_t *info, char *str)
 
 	x = _strchr(str, '=');
 	if (!x)
-		return (1);
+	{
+	return (1);
+	}
 	if (!*++x)
-			return (unset_alias(info, str));
+	{
+	return (unset_alias(info, str));
+	}
 
 	unset_alias(info, str);
-	return (add_node_end(&(info->alias), str, 0) == NULL);
+	return ((add_node_end(&(info->alias), str, 0) == NULL) ? 1 : 0);
 }
+
 
 /**
  * print_alias - it prints an alias string
