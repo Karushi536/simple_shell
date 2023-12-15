@@ -111,13 +111,13 @@ typedef struct modbuild
 } tblbuild;
 
 /* used in the file (strparse.c)*/
-int cmd_exist(d_type *, char *);
+int cmd_exist(s_type *, char *);
 char *dup_str(char *, int, int);
-char *cmd_path(d_type *, char *, char *);
+char *cmd_path(s_type *, char *, char *);
 
 /*used in the file (strget.c) */
-ssize_t getSysInput(d_type *);
-int custGetLine(d_type *, char **, size_t *);
+ssize_t getSysInput(s_type *);
+int custGetLine(s_type *, char **, size_t *);
 void sigintHandler(int);
 
 /* used in the file (strtoken.c) */
@@ -125,17 +125,17 @@ char **tkzStr(char *, char *);
 char **tkzStr2(char *, char);
 
 /* used in the file (strexec.c) */
-int strexec(d_type *, char **);
-int search_builtin(d_type *);
-void search_cmd(d_type *);
-void child_fork(d_type *);
+int strexec(s_type *, char **);
+int search_builtin(s_type *);
+void search_cmd(s_type *);
+void child_fork(s_type *);
 
 /* used in the file (loopexec.c) */
 int loopexec(char **);
 
 /* used in the file (strerr1.c) */
 int atoiErr(char *);
-void outputErr(d_type *, char *);
+void outputErr(s_type *, char *);
 int print_int(int, int);
 char *stringify_no(long int, int, int);
 void strip_comments(char *);
@@ -167,36 +167,36 @@ void *reallocmem(void *, unsigned int, unsigned int);
 int clearmem(void **);
 
 /* used in the file(stratoi.c)*/
-int modsys(d_type *);
+int modsys(s_type *);
 int delimchar(char, char *);
 int alphachar(int);
 int strtint(char *);
 
 /* used in the file (prdfndcmd.c)*/
-int exitbin(d_type *);
-int cdbin(d_type *);
-int helpbin(d_type *);
+int exitbin(s_type *);
+int cdbin(s_type *);
+int helpbin(s_type *);
 
 /* used in the file (prdfndcmd1.c) */
-int histdisp(d_type *);
-int createaka(d_type *);
+int histdisp(s_type *);
+int createaka(s_type *);
 
 /* used in the file (strenv.c)*/
-char **strenv(d_type *);
-int rmsetenv(d_type *, char *);
-int setenvset(d_type *, char *, char *);
+char **strenv(s_type *);
+int rmsetenv(s_type *, char *);
+int setenvset(s_type *, char *, char *);
 
 /* used in the file (strenviron.c) */
-char *retrienv(d_type *, const char *);
-int managenv(d_type *);
-int modsetenv(d_type *);
-int unsetenvrm(d_type *);
-int initenvar(d_type *);
+char *retrienv(s_type *, const char *);
+int managenv(s_type *);
+int modsetenv(s_type *);
+int unsetenvrm(s_type *);
+int initenvar(s_type *);
 
 /* used in the file (strinfo.c)*/
-void resetinfo(d_type *);
-void settinginfo(d_type *, char **);
-void memfrinfo(d_type *, int);
+void resetinfo(s_type *);
+void settinginfo(s_type *, char **);
+void memfrinfo(s_type *, int);
 
 /* used in the file (nodemod.c) */
 lst_t *putnode_start(lst_t **, const char *, int);
@@ -213,17 +213,17 @@ lst_t *specprefix(lst_t *, char *, char);
 ssize_t retrindex(lst_t *, lst_t *);
 
 /* used in the (manhistory.c) */
-char *rethistfile(d_type *d_typeinfo);
-int wrthist(d_type *d_typeinfo);
-int rdhist(d_type *d_typeinfo);
-int conhistlist(d_type *d_typeinfo, char *buf, int linecount);
-int renohist(d_type *d_typed_typeinfo);
+char *rethistfile(s_type *s_typeinfo);
+int wrthist(s_type *s_typeinfo);
+int rdhist(s_type *s_typeinfo);
+int conhistlist(s_type *d_typeinfo, char *buf, int linecount);
+int renohist(s_type *d_typed_typeinfo);
 
 /* used in the (strvar.c) */
-int check_opp(d_type *, char *, size_t *);
-void chainproc(d_type *, char *, size_t *, size_t, size_t);
-int akasub(d_type *);
-int varsub(d_type *);
+int check_opp(s_type *, char *, size_t *);
+void chainproc(s_type *, char *, size_t *, size_t, size_t);
+int akasub(s_type *);
+int varsub(s_type *);
 int strsub(char **, char *);
 
 /* used in the (term.c) */
