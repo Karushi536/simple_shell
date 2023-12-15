@@ -14,7 +14,7 @@ int ms_shell_loop(info_t *info, char **av)
 
 	while (r != -1 && builtin_ret != -2)
 	{
-		clear_info(info);
+		ms_clear_info(info);
 		if (ms_interactive(info))
 			_puts("$ ");
 		_eputchar(BUF_FLUSH);
@@ -118,4 +118,3 @@ void find_cmd(info_t *info)
 		}
 	}
 }
-
