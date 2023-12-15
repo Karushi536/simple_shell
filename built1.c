@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * _myhist - it displays the history list, one command by line, preceded
+ * _myhistory - it displays the history list, one command by line, preceded
  *              with line numbers, starting at 0.
  * @info: Structure containing potential arguments. Used to maintain
  *        constant function prototype.
  *  Return: Always 0 success
  */
-int _myhist(info_t *info)
+int _myhistory(info_t *info)
 {
-	print_list(info->hist);
+	print_list(info->history);
 	return (0);
 }
 
@@ -75,7 +75,7 @@ int print_alias(list_t *node)
 	if (node)
 	{
 		x = _strchr(node->str, '=');
-		for (v = node->str; v <= x; a++)
+		for (v = node->str; v <= x; v++)
 			_putchar(*v);
 		_putchar('\'');
 		_puts(x + 1);

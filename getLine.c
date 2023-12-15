@@ -24,7 +24,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
 #else
 		q = _getline(info, buf, &len_p);
 #endif
-		if (r > 0)
+		if (q > 0)
 		{
 			if ((*buf)[q - 1] == '\n')
 			{
@@ -58,8 +58,8 @@ ssize_t get_input(info_t *info)
 	char **buf_p = &(info->arg), *p;
 
 	_putchar(BUF_FLUSH);
-	r = input_buf(info, &buf, &len);
-	if (r == -1) /* EOF */
+	q = input_buf(info, &buf, &len);
+	if (q == -1) /* EOF */
 		return (-1);
 	if (len)	/* we have commands left in the chain buffer */
 	{
@@ -86,7 +86,7 @@ ssize_t get_input(info_t *info)
 	}
 
 	*buf_p = buf; /* else not a chain, pass back buffer from _getline() */
-	return (r); /* return length of buffer from _getline() */
+	return (q); /* return length of buffer from _getline() */
 }
 
 /**
@@ -131,7 +131,7 @@ int _getline(info_t *info, char **ptr, size_t *length)
 	if (i == len)
 		i = len = 0;
 
-	r = read_buf(info, buf, &len);
+	q = read_buf(info, buf, &len);
 	if (q == -1 || (q == 0 && len == 0))
 		return (-1);
 

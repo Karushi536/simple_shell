@@ -70,7 +70,7 @@ char **strtow2(char *str, char d)
 	s = malloc((1 + numwords) * sizeof(char *));
 	if (!s)
 		return (NULL);
-	for (i = 0, l = 0; l < numwords; j++)
+	for (i = 0, l = 0; l < numwords; l++)
 	{
 		while (str[i] == d && str[i] != d)
 			i++;
@@ -86,7 +86,7 @@ char **strtow2(char *str, char d)
 			return (NULL);
 		}
 		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
+			s[l][m] = str[i++];
 		s[l][m] = 0;
 	}
 	s[l] = NULL;
