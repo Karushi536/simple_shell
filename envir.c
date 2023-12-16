@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _myenv - it prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * _myenv - showcases the current environment settings
+ * @info: This holds potential arguments. Ensures a constant
+ *	function prototype.
+ * Return: Always returns 0 on completion.
  */
 int _myenv(info_t *info)
 {
@@ -13,11 +13,12 @@ int _myenv(info_t *info)
 }
 
 /**
- * _getenv - it gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * _getenv - retrieves the value of an environment variable
+ * @info: This contains potential arguments. Maintains
+ *	constant function prototype.
+ * @name: Name of the environment variable.
  *
- * Return: the value
+ * Return: The value of the specified environment variable.
  */
 char *_getenv(info_t *info, const char *name)
 {
@@ -35,11 +36,10 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * _mysetenv - It initialize a new environment variable,
- *             or modify an existing one
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0 success
+ * _mysetenv - Creates a new environment variable or updates an existing one
+ * @info: This structure contains potential arguments. Ensures a constant
+ *	function prototype.
+ * Return: Always returns 0 upon successful execution.
  */
 int _mysetenv(info_t *info)
 {
@@ -54,10 +54,10 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Removes an environment variable
- * @info: Structure containing potential arguments. Used to maintain
- *        constant function prototype.
- *  Return: Always 0 success
+ * _myunsetenv - Eradicates an environment variable
+ * @info: This structure orchestrates potential arguments. Preserves
+ *	the sanctity of constant function prototypes.
+ * Return: Triumphs with a return of 0 upon success.
  */
 int _myunsetenv(info_t *info)
 {
@@ -75,10 +75,10 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - it populates env linked list
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * populate_env_list - assembles an environment linked list
+ * @info: This contains potential arguments. Ensures a constant
+ *        function prototype.
+ * Return: Always returns 0.
  */
 int populate_env_list(info_t *info)
 {

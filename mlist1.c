@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * list_len - it determines length of linked list
- * @h: pointer to first node
+ * list_len - calculates the length of a linked list
+ * @h: function parameter Pointer to the first node.
  *
- * Return: size of list
+ * Return: Size of the list.
  */
 size_t list_len(const list_t *h)
 {
@@ -19,10 +19,10 @@ size_t list_len(const list_t *h)
 }
 
 /**
- * list_to_strings - it returns an array of strings of the list->str
- * @head: pointer to first node
+ * list_to_strings - fn generates an array of strings from the list->str values
+ * @head: function parameter Pointer to the first node.
  *
- * Return: array of strings
+ * Return: Array of strings.
  */
 char **list_to_strings(list_t *head)
 {
@@ -56,10 +56,10 @@ char **list_to_strings(list_t *head)
 
 
 /**
- * print_list - it prints all elements of a list_t linked list
- * @h: pointer to first node
+ * print_list - fn displays all elements of a list_t linked list
+ * @h: function parameter Pointer to the first node.
  *
- * Return: size of list
+ * Return: Size of the list.
  */
 size_t print_list(const list_t *h)
 {
@@ -79,12 +79,12 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * node_starts_with - it returns node whose string starts with prefix
- * @node: pointer to list head
- * @prefix: string to match
- * @c: the next character after prefix to match
+ * node_starts_with - fn finds a node whose string starts with a given prefix
+ * @node: fp one Pointer to the list head.
+ * @prefix: fp two String to match.
+ * @c: fp three The next character after the prefix to match.
  *
- * Return: match node or null
+ * Return: Matching node or NULL.
  */
 list_t *node_starts_with(list_t *node, char *prefix, char c)
 {
@@ -101,11 +101,11 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
 }
 
 /**
- * get_node_index - it gets the index of a node
- * @head: pointer to list head
- * @node: pointer to the node
+ * get_node_index - fn obtains the index of a node in a linked list
+ * @head: fp one Pointer to the list head.
+ * @node: fp two Pointer to the node.
  *
- * Return: index of node or -1
+ * Return: Index of the node or -1.
  */
 ssize_t get_node_index(list_t *head, list_t *node)
 {
